@@ -7,6 +7,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { MainComponent } from './layout/main/main.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MainComponent } from './layout/main/main.component';
     HeaderComponent,
     SidebarComponent,
     MainComponent,
+    MenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

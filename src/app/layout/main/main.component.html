@@ -1,19 +1,19 @@
-<div class="wrapper">
+<div class="container">
   <div class="row">
-    <div class="col-md">
+    <div class="col-md header">
       <app-header></app-header>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row mt-4 justify-content-between">
+    <div class="col-md-3 sidebar">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 main">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md">
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md footer">
       <app-footer></app-footer>
     </div>
   </div>
