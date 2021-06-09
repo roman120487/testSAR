@@ -1,1 +1,5 @@
-<p>gallery works!</p>
+<div class="row">
+  <div class="col-md-4" *ngFor="let item of photos">
+    <img src="{{ item.thumbnailUrl }}" alt="" />
+  </div>
+</div>
