@@ -15,6 +15,7 @@ export class PostsComponent implements OnInit {
   private readonly _destroy$: Subject<void> = new Subject<void>();
 
   postForm!: FormGroup;
+  indexEditedPost!: number;
 
   posts!: IPost[];
   constructor(
@@ -28,7 +29,8 @@ export class PostsComponent implements OnInit {
     this.getPosts();
   }
 
-  editPost(post: IPost) {
+  editPost(post: IPost, index: number) {
+    this.indexEditedPost = index;
     this.postForm.patchValue({
       ...post,
     });
@@ -36,15 +38,13 @@ export class PostsComponent implements OnInit {
 
   deletePost(postId: number) {
     const indexPost = this.posts?.findIndex((elem: IPost) => elem.id == postId);
-    console.log(indexPost);
     this.posts.splice(indexPost, 1);
-
     this.toastr.success('post was deleted success');
   }
 
   saveEditedPost() {
-    console.log('sdf');
-
+    this.posts[this.indexEditedPost] = this.postForm.value;
+    this.postForm.reset();
     this.toastr.success('post was successfully saved');
   }
 
