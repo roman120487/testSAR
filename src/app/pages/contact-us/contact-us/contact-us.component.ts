@@ -38,9 +38,11 @@ export class ContactUsComponent implements OnInit {
   }
 
   validatorUAphone(control: AbstractControl) {
-    // const regExp = new RegExp('/^+380d{3}d{2}d{2}d{2}$/');
-    console.log(control);
-    console.log(control.value.match('[/^+380d{3}d{2}d{2}d{2}$/]'));
+    // const regExp = /^+380d{3}d{2}d{2}d{2}$/;
+    // console.log(control);
+    // console.log(control.value.match('[/^+380d{3}d{2}d{2}d{2}$/]'));
+    // const string = '+380979455318';
+    // console.log(string.match('[/^+380d{3}d{2}d{2}d{2}$/]/g'));
 
     if (control.value.match('[/^+380d{3}d{2}d{2}d{2}$/]')) {
       return null;
