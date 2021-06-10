@@ -16,6 +16,10 @@ export class GalleryComponent implements OnInit {
   constructor(private requestService: RequestsService) {}
 
   ngOnInit(): void {
+    this.getPhotos();
+  }
+
+  getPhotos() {
     this.requestService
       .getPhotos()
       .pipe(takeUntil(this._destroy$))

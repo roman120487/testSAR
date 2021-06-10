@@ -1,1 +1,56 @@
-<p>posts works!</p>
+<form [formGroup]="postForm">
+  <div class="row">
+    <div class="col-md">
+      <div class="row">
+        <input type="text" formControlName="title" />
+      </div>
+      <div class="row">
+        <textarea formControlName="body" cols="30" rows="5"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-success" (click)="saveEditedPost()">
+        Save
+      </button>
+      <button type="button" class="btn btn-success ml-3" (click)="addNewPost()">
+        Add new post
+      </button>
+    </div>
+  </div>
+</form>
+<!-- ---------- -->
+<div class="row">
+  <div class="col-md-4 mt-3 p-2" *ngFor="let item of posts">
+    <div class="row">
+      <div class="col-md title"><span>User ID: </span>{{ item.userId }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <h5>{{ item.title }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        {{ item.body }}
+      </div>
+    </div>
+    <div class="row mt-3 pl-3">
+      <div class="col-md-3">
+        <button type="button" (click)="editPost(item)" class="btn btn-primary">
+          Edit
+        </button>
+      </div>
+      <div class="col-md-3">
+        <button
+          type="button"
+          (click)="deletePost(item.id)"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,11 +7,12 @@ import { HomeModule } from './pages/home/home.module';
 import { PostsModule } from './pages/posts/posts.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
   {
     path: 'main',
     component: MainComponent,
     children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', loadChildren: () => HomeModule },
       { path: 'posts', loadChildren: () => PostsModule },
       { path: 'gallery', loadChildren: () => GalleryModule },
