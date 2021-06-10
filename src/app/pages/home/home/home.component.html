@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="row" style="text-align: center">
+      <h5>Top 10 posts</h5>
+    </div>
+    <div class="row">
+      <div class="col-md-3 m-3" *ngFor="let item of posts">
+        <div class="row">
+          <h5>{{ item.title }}</h5>
+        </div>
+        <div class="row">
+          {{ item.body }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row" style="text-align: center">
+      <h5>Top 10 photos</h5>
+    </div>
+    <div class="row">
+      <div class="col-md-3 m-3" *ngFor="let item of photos">
+        <img src="{{ item.thumbnailUrl }}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

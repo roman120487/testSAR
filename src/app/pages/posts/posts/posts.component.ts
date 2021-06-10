@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
 
   postForm!: FormGroup;
   indexEditedPost!: number;
+  editPostBool = false;
 
   posts!: IPost[];
   constructor(
@@ -30,6 +31,7 @@ export class PostsComponent implements OnInit {
   }
 
   editPost(post: IPost, index: number) {
+    this.editPostBool = true;
     this.indexEditedPost = index;
     this.postForm.patchValue({
       ...post,
@@ -43,12 +45,16 @@ export class PostsComponent implements OnInit {
   }
 
   saveEditedPost() {
-    this.posts[this.indexEditedPost] = this.postForm.value;
+    const index = this.indexEditedPost;
+    this.posts[index] = this.postForm.value;
     this.postForm.reset();
+    this.editPostBool = false;
     this.toastr.success('post was successfully saved');
   }
 
   addNewPost() {
+    this.posts.unshift(this.postForm.value);
+    this.postForm.reset();
     this.toastr.success('post was successfully added');
   }
 
@@ -56,11 +62,14 @@ export class PostsComponent implements OnInit {
     this.requestService
       .getPosts()
       .pipe(takeUntil(this._destroy$))
-      .subscribe((res) => {
-        console.log('posts');
-        console.log(res.slice(0, 20));
-        this.posts = res.slice(0, 20);
-      });
+      .subscribe(
+        (res) => {
+          console.log('posts');
+          console.log(res.slice(0, 20));
+          this.posts = res.slice(0, 20);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
   reactiveForm() {

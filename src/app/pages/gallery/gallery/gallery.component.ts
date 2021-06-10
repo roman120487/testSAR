@@ -23,11 +23,12 @@ export class GalleryComponent implements OnInit {
     this.requestService
       .getPhotos()
       .pipe(takeUntil(this._destroy$))
-      .subscribe((res) => {
-        console.log('photos');
-        console.log(res.slice(0, 20));
-        this.photos = res.slice(0, 20);
-      });
+      .subscribe(
+        (res) => {
+          this.photos = res.slice(0, 20);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
   ngOnDestroy(): void {
